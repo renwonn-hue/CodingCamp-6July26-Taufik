@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense & Budget Visualizer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>💰 Expense & Budget Visualizer</h1>
+                <p>Visualisasi dan kelola pengeluaran Anda dengan mudah</p>
+            </div>
+            <button id="themeBtn" class="theme-btn">🌙 Dark Mode</button>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="layout-wrapper">
+            <!-- Left Panel: Transaction Form & List -->
+            <div class="left-panel">
+                <!-- Total Balance Section -->
+                <div class="balance-card">
+                    <div class="balance-info">
+                        <p class="balance-label">Total Pengeluaran</p>
+                        <p class="balance-amount" id="totalBalance">Rp 0</p>
+                    </div>
+                    <div class="balance-icon">💸</div>
+                </div>
+
+                <!-- Form Section -->
+                <section class="section form-section">
+                    <h2 class="section-title">Tambah Pengeluaran</h2>
+                    <form id="expenseForm">
+                        <div class="form-group">
+                            <label for="itemName">Nama Item</label>
+                            <input 
+                                type="text" 
+                                id="itemName" 
+                                placeholder="Contoh: Makan siang" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Jumlah (Rp)</label>
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                placeholder="0" 
+                                min="0" 
+                                step="1000"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Kategori</label>
+                            <select id="category" required>
+                                <option value="">-- Pilih Kategori --</option>
+                                <option value="Food">🍔 Makanan</option>
+                                <option value="Transport">🚗 Transportasi</option>
+                                <option value="Fun">🎮 Hiburan</option>
+                                <option value="Health">🏥 Kesehatan</option>
+                                <option value="Other">📌 Lainnya</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-primary">➕ Tambah Pengeluaran</button>
+                    </form>
+                </section>
+
+                <!-- Transaction List Section -->
+                <section class="section list-section">
+                    <h2 class="section-title">Daftar Transaksi</h2>
+                    <div class="transaction-list" id="transactionList">
+                        <div class="empty-state">
+                            <p>📭 Belum ada transaksi</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Panel: Chart & Summary -->
+            <div class="right-panel">
+                <!-- Chart Section -->
+                <section class="section chart-section">
+                    <h2 class="section-title">Distribusi Pengeluaran</h2>
+                    <div class="chart-container">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Category Summary -->
+                <section class="section summary-section">
+                    <h2 class="section-title">Ringkasan Kategori</h2>
+                    <div class="category-summary" id="categorySummary">
+                        <div class="empty-state">
+                            <p>📊 Belum ada data kategori</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="clearBtn" class="btn-secondary">🗑️ Hapus Semua</button>
+                    <button id="exportBtn" class="btn-secondary">📥 Export Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
